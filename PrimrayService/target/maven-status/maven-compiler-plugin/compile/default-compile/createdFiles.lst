@@ -1,0 +1,17 @@
+gov\psm\primary\service\aspect\MethodLogger.class
+gov\psm\primary\service\service\PrimaryServiceImpl.class
+gov\psm\primary\service\service\PrimaryService.class
+gov\psm\primary\service\aspect\TimeThresholdLogger.class
+gov\psm\primary\service\exception\CommonUtilException.class
+gov\psm\primary\service\common\Constants.class
+gov\psm\primary\service\admin\controller\BuildInfoEndpoint.class
+gov\psm\primary\service\controller\PrimaryServiceController.class
+gov\psm\primary\service\utility\PropQueryUtils.class
+gov\psm\primary\service\config\SwaggerConfig.class
+gov\psm\primary\service\config\PrimaryServiceConfig.class
+gov\psm\primary\service\PrimaryServiceApplication.class
+gov\psm\primary\service\utility\ProposalFileUtility.class
+gov\psm\primary\service\aspect\RequestLogAspect.class
+gov\psm\primary\service\model\Accounts.class
+gov\psm\primary\service\model\AccountHolder.class
+gov\psm\primary\service\aspect\InvocationTimeLogger.class

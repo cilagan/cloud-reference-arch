@@ -1,0 +1,51 @@
+# APPLICATION CONFIGURATION PROPERTIES #
+# To implement externalized configuration
+# 1. Remove this file from /src/main/resources
+# 2. Configure the following OS variables
+#    * SPRING_CONFIG_LOCATION
+#    * SPRING_PROFILES_ACTIVE
+# 3. Place this file in the SPRING_CONFIG_LOCATION directory
+#     - attach an environment suffix (i.e., solicitation-dev.yml) if you require environment-specific loading
+# 4. Deploy the application
+# The application will load the externalized properties file during initialization
+server:
+    port: 8093
+    
+# Spring Boot settings #
+security: 
+    basic: 
+        enabled: false              
+        
+endpoints:
+    loggers:
+        sensitive: false
+        
+management:
+    context-path: /internal/manage
+    #security:
+        #enabled: false               
+        
+            
+# Spring settings #
+spring: 
+    jmx: 
+        enabled: false
+    jndi:
+        ignore: true
+    jackson: 
+        serialization-inclusion: non_null
+        serialization:
+            indent_output: true
+    http: 
+        multipart:
+            max-file-size: 50MB
+            max-request-size: 50MB
+            
+# Build Info #
+buildinfo:
+    artifact-version: @version@
+    build-date: @timestamp@
+    java-version: @java.version@ 
+    project-name: @project.name@
+    #scm-version: @scm.version@#
+

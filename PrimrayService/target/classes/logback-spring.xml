@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+<!-- 	<property name="PSM_LOG_PATH" value="/Users/carloilagan/logs/"/> -->
+	<property name="PSM_LOG_PATH" value="/opt/apps/psm/logs/"/>
+	<property name="PSM_LOG_FILE" value="primary-service.log"/>
+	<property name="PDT_INTG_LOG_FILE" value="prop_mgmt_pdt_tracker.log"/>
+
+	<appender name="FILE_SERVER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<file>${PSM_LOG_PATH}${PSM_LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${PSM_LOG_PATH}/archive/${PSM_LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>50MB</maxFileSize>
+		</rollingPolicy>
+	</appender>
+	<appender name="PDT_TRACKER"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<file>${PSM_LOG_PATH}${PDT_INTG_LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${PSM_LOG_PATH}/archive/${PDT_INTG_LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>50MB</maxFileSize>
+		</rollingPolicy>
+	</appender>
+
+<!-- 	<logger name="org.springframework.web" level="DEBUG"/> -->
+	<logger name="gov.nsf.psm" level="INFO"/>
+	<logger name="gov.nsf.psm.propmgt.aspect.InvocationTimeLogger" level="DEBUG"/>
+	<logger name="gov.nsf.psm.propmgt.service.ExternalServicesImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.proposaldata.ProposalDataServiceClientImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.solicitation.SolicitationDataServiceClientImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.documentcompliance.DocumentComplianceServiceClientImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.filestorage.FileStorageServiceClientImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.compliancevalidation.ComplianceValidationServiceClientImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.propmgt.service.ProposalManagementServiceImpl" level="DEBUG"/>
+	<logger name="gov.nsf.psm.propmgt.controller.ProposalDocumentController" level="DEBUG"/>
+	<logger name="gov.nsf.psm.propmgt.service.ProposalManagementForTransferServiceImpl" level="DEBUG">
+		<appender-ref ref="PDT_TRACKER"/>
+	</logger>
+
+	<root level="INFO" >
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE_SERVER" />
+	</root>
+
+ </configuration>
