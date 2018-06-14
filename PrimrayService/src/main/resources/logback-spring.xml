@@ -3,8 +3,8 @@
 
 	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
 	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
-<!-- 	<property name="PSM_LOG_PATH" value="/Users/carloilagan/logs/"/> -->
-	<property name="PSM_LOG_PATH" value="/opt/apps/psm/logs/"/>
+	<property name="PSM_LOG_PATH" value="/Users/carloilagan/logs/"/>
+<!-- 	<property name="PSM_LOG_PATH" value="/opt/apps/psm/logs/"/> -->
 	<property name="PSM_LOG_FILE" value="primary-service.log"/>
 	<property name="PDT_INTG_LOG_FILE" value="prop_mgmt_pdt_tracker.log"/>
 
