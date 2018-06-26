@@ -7,10 +7,10 @@
 	<!-- *********************************************************************** -->
 	<!-- Project Identification -->
 	<!-- *********************************************************************** -->
-	<artifactId>primary-service</artifactId>
+	<artifactId>secondary-service</artifactId>
 	<packaging>war</packaging>
-	<name>Primary Service</name>
-	<description>PSM Primary Service</description>
+	<name>Secondary Service</name>
+	<description>PSM Secondary Service</description>
 	<version>1.0.0-SNAPSHOT</version>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package gov.psm.primary.service.model;
+package gov.psm.secondary.service.model;
 
 import java.util.List;
 

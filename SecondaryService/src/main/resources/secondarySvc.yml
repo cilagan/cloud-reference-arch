@@ -9,7 +9,7 @@
 # 4. Deploy the application
 # The application will load the externalized properties file during initialization
 server:
-    port: 8080
+    port: 8093
     
 # Spring Boot settings #
 security: 
@@ -48,12 +48,4 @@ buildinfo:
     java-version: @java.version@ 
     project-name: @project.name@
     #scm-version: @scm.version@#
-
-# Secondary Service settings #
-secondaryService:
-    serverUrl: http://localhost:8093/secondarySvc
-    username: psmuser       
-    password: password     
-    authenticationRequired: false
-    timeout: 12000
 
