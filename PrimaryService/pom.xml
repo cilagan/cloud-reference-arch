@@ -33,6 +33,10 @@
 		<springfox.version>2.6.1</springfox.version>
 		<springfox.ui.version>2.6.1</springfox.ui.version>
 		<com.google.guava.version>19.0</com.google.guava.version>
+		<!--set this to your docker acct name-->
+		<docker.image.prefix>cilagan</docker.image.prefix>
+		<!--Set to name of project-->
+		<docker.image.name>primary-service-docker</docker.image.name>
 	</properties>
 
 	<!-- *********************************************************************** -->
@@ -172,6 +176,41 @@
 						<artifactId>maven-surefire-plugin</artifactId>
 						<configuration>
 							<redirectTestOutputToFile>true</redirectTestOutputToFile>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.26.0</version>
+						<configuration>
+							<!--<dockerHost>http://127.0.0.1:2375</dockerHost>-->
+							<dockerHost>unix:///var/run/docker.sock</dockerHost>
+		          <verbose>true</verbose>
+							<images>
+								<image>
+									<name>${docker.image.prefix}/${docker.image.name}</name>
+									<build>
+										<dockerFileDir>${project.basedir}/src/main/docker/</dockerFileDir>
+										<!--copies artifact to docker build dir in target-->
+										<assembly>
+												<descriptorRef>artifact</descriptorRef>
+										</assembly>
+										<tags>
+											<tag>latest</tag>
+											<tag>${project.version}</tag>
+										</tags>
+									</build>
+										<run>
+											<ports>
+													<port>8093:8093</port>
+											</ports>
+										</run>
+								</image>
+							</images>
 						</configuration>
 					</plugin>
 				</plugins>

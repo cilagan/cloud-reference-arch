@@ -21,7 +21,7 @@ public class SecondaryServiceImpl implements SecondaryService {
 		accountHolders.add(accountHolder);
 		accountHolder = new AccountHolder();
 		accountHolder.setId("id2");
-		accountHolder.setName("Name2");
+		accountHolder.setName("Carlo Ilagan");
 		accountHolder.setAddress("address2");
 		accountHolders.add(accountHolder);
 		accounts.setAccounts(accountHolders);

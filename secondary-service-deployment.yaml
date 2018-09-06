@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: secondary-service-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - name: primary-service
+        image: cilagan/secondary-service-docker:latest
+        ports:
+        - name: api-port
+          containerPort: 8093

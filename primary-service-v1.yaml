@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: primary-service-v1-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: testapp-primary
+    spec:
+      containers:
+      - name: primary-service
+        image: cilagan/primary-service-docker:latest
+        ports:
+        - name: api-port
+          containerPort: 8083
+        env:
+        - name: SECOND_SERVICE_HOST
+          value: secondary-service-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: primary-service-service
+spec:
+  ports:
+  - port: 8083
+    nodePort: 30300
+    targetPort: 8083
+    protocol: TCP
+    name: http
+  selector:
+    app: testapp-primary
+  type: NodePort
